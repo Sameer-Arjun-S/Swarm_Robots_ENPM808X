@@ -51,3 +51,20 @@ jobs:
           colcon build --cmake-args -DCOVERAGE=1 --packages-select hydra
           cat log/latest_build/hydra/stdout_stderr.log
           find build/hydra/ | grep -E 'gcno' # catch error -- exepct to see .gcno files
+      # Generate code coverage test report
+      - name: Generate test coverage report
+        run: |
+          source install/setup.bash
+          ros2 run hydra generate_coverage_report.bash
+
+      # Upload coverage result to CodeCov
+      - name: Upload coverage result to CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ${{github.workspace}}/install/hydra/lib/hydra/coverage_cleaned.info
+          # flags: unittests # optional
+          # directory: ${{github.workspace}}/install/
+          # name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
