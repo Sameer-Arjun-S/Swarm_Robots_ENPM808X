@@ -8,3 +8,8 @@
 - [Sameer Arjun S](https://github.com/Sameer-Arjun-S) 
 - [Manav Bhavesh Nagda](https://github.com/mvboiii)
 - [Ishaan Samir Parikh](https://github.com/Ishaan1810)
+
+
+# Agile Implpementation Process:
+- [Agile Iterative Process](https://docs.google.com/spreadsheets/d/1kNnjrfgtdtyvd8Hb7R8aV4-XI82XxSHm4BPfusI4Z_g/edit#gid=1106376998)
+- 
