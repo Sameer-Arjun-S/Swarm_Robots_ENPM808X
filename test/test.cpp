@@ -9,7 +9,7 @@ TEST(AlgorithmTest,CircleTest) {
   traj.setCenter(0,0);
   traj.setRobotCount(20);
   std::vector<std::vector<double>> circle = traj.generateCirclePath();
-  EXPECT_EQ(circle.size(),24);
+  EXPECT_EQ(circle.size(),20);
 }
 
 TEST(AlgorithmTest,SquareTest) {
@@ -17,5 +17,5 @@ TEST(AlgorithmTest,SquareTest) {
   traj.setCenter(0,0);
   traj.setRobotCount(20);
   std::vector<std::vector<double>> square = traj.generateSquarePath();
-  EXPECT_EQ(square.size(),24);
+  EXPECT_EQ(square.size(),20);
 }
