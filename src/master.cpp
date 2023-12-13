@@ -1,3 +1,12 @@
+/**
+ * @file master.cpp
+ * @author Driver: Sameer Arjun S  Navigator: Ishaan Parikh  Design Keeper: Manav Nagda
+ * @brief  Master class for the project which creates a master node and executes
+ * the trajectory algorithm
+ * @version 0.1
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include "../include/master.hpp"
 #include "../include/custom_trajectory.hpp"
 
@@ -19,11 +28,35 @@ Master::Master(std::vector<std::shared_ptr<RobotMove>> const &robot_array)
   this->traj();
 }
 
-void Master::process_callback() {
-  // Stub: Implementing the process callback logic
-  // Implementing the logic to control the robots based on trajectory
-}
+void Master::process_callback() {}
 
 void Master::traj() {
-// STUB 
+  CustomTrajectory trajectory;
+  int choice = trajectory.randomizeCenter();
+  int stationNumber = trajectory.assignStationNumber(trajectory.xCenter, trajectory.yCenter); 
+  trajectory.setRobotCount(20);
+  vector<vector<double>> circleTrajectory = trajectory.generateCirclePath();
+  vector<vector<double>> squareTrajectory = trajectory.generateCirclePath();
+
+  cout << "There is a fire at station number: " << stationNumber << endl;
+
+  switch (choice) {
+  case 1:
+    cout << "Executing Circular Formation" << endl;
+    for (int i = 0; i < static_cast<int>(circleTrajectory.size()); i++) {
+      this->robot_array[i]->set_goal(circleTrajectory[i][0],
+                                     circleTrajectory[i][1]);
+    }
+    break;
+  case 2:
+    cout << "Executing Square Formation" << endl;
+    for (int i = 0; i < static_cast<int>(squareTrajectory.size()); i++) {
+      this->robot_array[i]->set_goal(squareTrajectory[i][0],
+                                     squareTrajectory[i][1]);
+    }
+    break;
+  default:
+    cout << "Invalid choice" << endl;
+    break;
+  }
 }
