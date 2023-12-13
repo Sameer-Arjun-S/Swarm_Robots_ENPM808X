@@ -44,27 +44,17 @@ jobs:
           sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
           sudo apt install -y lcov
 
-      # Configure CMake flags and build exectables
+      # Build, run unit test, and generate coverage report
       - name: Configure CMake flags and build exectables
         run: |
-          source /opt/ros/humble/setup.bash
-          colcon build --cmake-args -DCOVERAGE=1 --packages-select hydra
-          cat log/latest_build/hydra/stdout_stderr.log
-          find build/hydra/ | grep -E 'gcno' # catch error -- exepct to see .gcno files
-      # Generate code coverage test report
-      - name: Generate test coverage report
-        run: |
-          source install/setup.bash
-          ros2 run hydra generate_coverage_report.bash
+          cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
+          cmake --build build/ --clean-first --target all test_coverage
 
       # Upload coverage result to CodeCov
       - name: Upload coverage result to CodeCov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          files: ${{github.workspace}}/install/hydra/lib/hydra/coverage_cleaned.info
-          # flags: unittests # optional
-          # directory: ${{github.workspace}}/install/
-          # name: codecov-umbrella # optional
+          files: ${{github.workspace}}/build/test_coverage.info
           fail_ci_if_error: true # optional (default = false)
-          verbose: true # optional (default = false)
+          verbose: true # optional (default = false)      
