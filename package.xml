@@ -4,7 +4,7 @@
   <name>hydra</name>
   <version>1.5.0</version>
   <description>A ROS 2 package to simulate a swarm algorithm</description>
-  <maintainer email="ssarjun@umd.edu">Sameer Arjun S</maintainer>
+  <maintainer email="manav19@umd.edu">Manav Nagda</maintainer>
   <license>MIT License</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
