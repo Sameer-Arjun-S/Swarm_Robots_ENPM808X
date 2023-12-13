@@ -1,35 +1,31 @@
 #ifndef INCLUDE_CUSTOM_TRAJECTORY_HPP_
 #define INCLUDE_CUSTOM_TRAJECTORY_HPP_
 
-#include <vector>
 #include <cmath>
+#include <iostream>
+#include <vector>
 
 class CustomTrajectory {
-public:
-  CustomTrajectory();
-
-  int randomizeCenter();
-
-  int assignStationNumber(double x, double y);
-
-  void setCenter(double x, double y);
-
-  void setRobotCount(double n);
-
-  int getRobotCount();
-
-  std::vector<std::vector<double>> generateCirclePath();
-
-  std::vector<std::vector<double>> generateSquarePath();
-
-private:
-  double centersArray[4][2];
+ public:
   double xCenter;
   double yCenter;
+
+ private:
+  double centersArray[4][2];  
   double circleRadius;
-  double circumRadius;
   double sideLength;
   double robotCount;
+  double circumRadius;
+
+ public:
+  CustomTrajectory();
+  void setCenter(double x, double y);
+  void setRobotCount(double n);
+  int getRobotCount();
+  int randomizeCenter();
+  int assignStationNumber(double x, double y);
+  std::vector<std::vector<double>> generateCirclePath();
+  std::vector<std::vector<double>> generateSquarePath();
 };
 
-#endif // INCLUDE_CUSTOM_TRAJECTORY_HPP_
+#endif  // INCLUDE_CUSTOM_TRAJECTORY_HPP_
