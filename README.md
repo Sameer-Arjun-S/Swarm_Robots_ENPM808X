@@ -1,6 +1,7 @@
-# 
-Implementation of swarm robots for ENPM808X final project
+# Implementation of swarm robots for ENPM808X final project
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+![CICD Workflow status](https://github.com/Sameer-Arjun-S/hydra/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)
+[![codecov](https://codecov.io/gh/Sameer-Arjun-S/hydra/branch/development/graph/badge.svg)](https://codecov.io/gh/Sameer-Arjun-S/hydra)
 
 
 # Authors:
