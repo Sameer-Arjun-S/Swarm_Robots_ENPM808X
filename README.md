@@ -25,7 +25,10 @@ the optimal shape of surroundings in square, circle, or triangle shapes.
 - [Agile Iterative Process](https://docs.google.com/spreadsheets/d/1kNnjrfgtdtyvd8Hb7R8aV4-XI82XxSHm4BPfusI4Z_g/edit#gid=1106376998)
 - [Sprint Review](https://docs.google.com/document/d/1fweS0_-lTLAzGLIpkdcCDKc-3AHm12xAb0H6oILBxqQ/edit)
 
-#Phase 1 presentation video
+# Report
+- [Phase 0 Report](https://github.com/Sameer-Arjun-S/hydra/blob/development_branch/Phase%200%20Report.pdf)
+
+# Phase 1 presentation video
 [Video](https://drive.google.com/drive/folders/1NMGBkv37AdHuSnkcF0G6__kuWJ8FNRUv?usp=drive_link)
 
 
