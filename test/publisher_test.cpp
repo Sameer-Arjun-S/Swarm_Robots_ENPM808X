@@ -27,7 +27,7 @@ class TestPublisher : public testing::Test {
 TEST_F(TestPublisher, test_num_publishers) {
   node_ = rclcpp::Node::make_shared("test_pub");
   auto test_pub = node_->create_publisher<std_msgs::msg::String>
-                    ("Publisher active", 10.0);
+                    ("Publisher active", 5.0);
     
   auto pub = node_->count_publishers("Publisher active");
   EXPECT_EQ(1, static_cast<int>(pub));
