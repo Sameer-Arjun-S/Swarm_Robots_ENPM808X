@@ -27,3 +27,17 @@ the optimal shape of surroundings in square, circle, or triangle shapes.
 
 #Phase 1 presentation video
 [Video](https://drive.google.com/drive/folders/1NMGBkv37AdHuSnkcF0G6__kuWJ8FNRUv?usp=drive_link)
+
+
+## Compiling and running via command line:
+```
+#Cloning the repository
+  git clone https://github.com/Sameer-Arjun-S/hydra 
+#Configure the project and generate a native build system
+  cmake -S ./ -B build/
+#Compiling and building the project
+  cmake --build build/ --clean-first
+# Build the documentation into the 'docs' directory using CMake:
+  cmake --build build/ --hydra
+
+```
