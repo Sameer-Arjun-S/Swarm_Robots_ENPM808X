@@ -1,5 +1,5 @@
 /**
- * @file master.cpp
+ * @file publisher.cpp
  * @author Driver: Manav Nagda  Navigator: Sameer Arjun Design Keeper: Ishaan Parikh
  * @brief  Master class for the project which creates a master node and executes
  * the trajectory algorithm
