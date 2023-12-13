@@ -59,7 +59,7 @@ jobs:
           colcon test --packages-select hydra
           cat log/latest_test/hydra/stdout_stderr.log
           find build/hydra/ | grep -E 'gcda' # catch error -- expect to see .gcda files
-          colcon test-result --test-result-base build/ENPM808X_PacMan/ # catch error
+          colcon test-result --test-result-base build/hydra/ # catch error
       
       # Generate code coverage test report
       - name: Generate test coverage report
