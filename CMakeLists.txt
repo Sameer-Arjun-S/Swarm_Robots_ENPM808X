@@ -90,7 +90,22 @@ if(BUILD_TESTING)
   install(TARGETS test_${PROJECT_NAME}
     DESTINATION lib/${PROJECT_NAME}
   )
+  endif()
+
+if(WANT_COVERAGE)
+  # unit test coverage:
+  setup_target_for_coverage_lcov ( # use lcov to generate coverage report
+  NAME test_coverage          # target name
+  EXECUTABLE ctest || true    # what to run insdie the build directory?
+  #                             #   '|| true' --> continue coverage even if ctest failed
+  EXECUTABLE ctest     # what to run insdie the build directory?
+  EXCLUDE
+  )
+
 endif()
+
+# create targets for building code coverage reports
+
 
 # # Install scripts
 # install(PROGRAMS scripts/generate_coverage_report.bash
