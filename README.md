@@ -12,4 +12,7 @@
 
 # Agile Implpementation Process:
 - [Agile Iterative Process](https://docs.google.com/spreadsheets/d/1kNnjrfgtdtyvd8Hb7R8aV4-XI82XxSHm4BPfusI4Z_g/edit#gid=1106376998)
-- 
+- [Sprint Review](https://docs.google.com/document/d/1fweS0_-lTLAzGLIpkdcCDKc-3AHm12xAb0H6oILBxqQ/edit)
+
+#Phase 1 presentation video
+[Video](https://drive.google.com/drive/folders/1NMGBkv37AdHuSnkcF0G6__kuWJ8FNRUv?usp=drive_link)
