@@ -70,6 +70,6 @@ jobs:
       # Upload coverage result to CodeCov
       - name: Upload coverage result to CodeCov
         uses: codecov/codecov-action@v3
-        with:
+        env:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           files: ${{github.workspace}}/install/hydra/lib/hydra/coverage_cleaned.info     
