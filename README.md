@@ -32,15 +32,38 @@ the optimal shape of surroundings in square, circle, or triangle shapes.
 [Video](https://drive.google.com/drive/folders/1NMGBkv37AdHuSnkcF0G6__kuWJ8FNRUv?usp=drive_link)
 
 
-## Compiling and running via command line:
+# Package Building Instructions
 ```
+# Installing turtlebot packages
+sudo apt-get install ros-humble-turtlebot3*
+# Navigate to your repository
+cd ros2_ws/src
 #Cloning the repository
-  git clone https://github.com/Sameer-Arjun-S/hydra 
-#Configure the project and generate a native build system
-  cmake -S ./ -B build/
-#Compiling and building the project
-  cmake --build build/ --clean-first
-# Build the documentation into the 'docs' directory using CMake:
-  cmake --build build/ --hydra
-
+  git clone https://github.com/Sameer-Arjun-S/hydra
+# Source ROS2
+cd ..
+source /opt/ros/humble/setup.bash
+# Building the project
+colcon build --symlink-install
+colcon build --packages-select hydra
+#source the package
+. install/local_setup.bash
 ```
+
+# Running instructions
+```
+ros2 launch hydra hydra_world.launch.py
+# Running the swarm algorithm
+ros2 run hydra x_publisher
+```
+
+# License
+MIT License
+
+Copyright (c) 2023 Manav Nagda, Sameer Arjun S, Ishaan Sameer Parikh 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
