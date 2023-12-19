@@ -13,7 +13,7 @@
 #include "../include/publisher.hpp"
 
 /**
- * @brief Test fixture class for the project
+ * @brief Test fixture class for testing publisher and subscriber
  * 
  */
 class TestPublisher : public testing::Test {
@@ -21,7 +21,7 @@ class TestPublisher : public testing::Test {
   rclcpp::Node::SharedPtr node_;
 };
 /**
- * @brief Construct a new test f object to test the publisher
+ * @brief Test the number of publishers created
  * 
  */
 TEST_F(TestPublisher, test_num_publishers) {
@@ -33,7 +33,7 @@ TEST_F(TestPublisher, test_num_publishers) {
   EXPECT_EQ(1, static_cast<int>(pub));
 }
 /**
- * @brief Construct a new test f object to test the subscriber
+ * @brief Test the number of subscribers created
  * 
  */
 TEST_F(TestPublisher, test_num_subscribers) {

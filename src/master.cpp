@@ -20,6 +20,11 @@ using TWIST = geometry_msgs::msg::Twist;
 using ODOM = nav_msgs::msg::Odometry;
 using RCL_NODE_PTR = std::shared_ptr<rclcpp::Node>;
 
+/**
+ * @brief Constructor for Master class.
+ * @param robot_array Vector of shared pointers to RobotMove objects.
+ */
+
 Master::Master(std::vector<std::shared_ptr<RobotMove>> const &robot_array)
     : Node("master_node") {
   this->robot_array = robot_array;
@@ -28,8 +33,14 @@ Master::Master(std::vector<std::shared_ptr<RobotMove>> const &robot_array)
   this->traj();
 }
 
+/**
+ * @brief Empty process callback method.
+ */
 void Master::process_callback() {}
-
+/**
+ * @brief Executes the trajectory algorithm based on random choice.
+ * Generates path and sets goals for robots accordingly.
+ */
 void Master::traj() {
   CustomTrajectory trajectory;
   int choice = trajectory.randomizeCenter();
