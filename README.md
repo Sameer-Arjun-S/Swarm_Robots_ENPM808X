@@ -31,6 +31,12 @@ the optimal shape of surroundings in square, circle, or triangle shapes.
 # Phase 1 presentation video
 [Video](https://drive.google.com/drive/folders/1NMGBkv37AdHuSnkcF0G6__kuWJ8FNRUv?usp=drive_link)
 
+## Dependencies:
+* Operating System: Ubuntu 22.04 or Docker setup
+* ROS2 Humble
+* Simulator: Gazebo
+* Packages: [Turtlebot 3 for ROS2](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/)
+* Programming language: Python
 
 ## Compiling and running via command line:
 ```
@@ -44,3 +50,45 @@ the optimal shape of surroundings in square, circle, or triangle shapes.
   cmake --build build/ --hydra
 
 ```
+## Generating the documentation
+```
+# Build the documentation into the 'docs' directory using CMake:
+  cmake --build build/ --target docs
+# Open the documentation as a HTML file in your web browser:
+  open docs/html/index.html
+```
+## Building for test coverage
+```
+# If you don't have gcovr or lcov installed, run:
+  sudo apt-get install gcovr lcov
+# Set the build type to Debug and WANT_COVERAGE=ON:
+  cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
+# Do a clean compile, run unit test, and generate the coverage report:
+  cmake --build build/ --clean-first --target all test_coverage
+# Open a web browser to browse the test coverage report:
+  open build/test_coverage/index.html
+```
+## Checking for cppcheck and cpplint
+```
+# if you need to install cppcheck, do
+sudo apt install cppcheck
+
+# run in the top-level project directory (eg., in cpp-boilerplate-v2/)
+cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" )
+```
+```
+# You may need to install cpplint:
+sudo apt install cpplint
+
+# run in the top-level project directory (eg., in cpp-boilerplate-v2/)
+cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" )
+```
+
+## Google style code verification
+```
+# Install Cpplint(ignore if already installed):
+  sudo apt install cpplint
+# Self-check Google code style conformity using Cpplint:
+  cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" )
+```
+
