@@ -31,39 +31,64 @@ the optimal shape of surroundings in square, circle, or triangle shapes.
 # Phase 1 presentation video
 [Video](https://drive.google.com/drive/folders/1NMGBkv37AdHuSnkcF0G6__kuWJ8FNRUv?usp=drive_link)
 
+## Dependencies:
+* Operating System: Ubuntu 22.04 or Docker setup
+* ROS2 Humble
+* Simulator: Gazebo
+* Packages: [Turtlebot 3 for ROS2](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/)
+* Programming language: Python
 
-# Package Building Instructions
+## Compiling and running via command line:
 ```
-# Installing turtlebot packages
-sudo apt-get install ros-humble-turtlebot3*
-# Navigate to your repository
-cd ros2_ws/src
 #Cloning the repository
-  git clone https://github.com/Sameer-Arjun-S/hydra
-# Source ROS2
-cd ..
-source /opt/ros/humble/setup.bash
-# Building the project
-colcon build --symlink-install
-colcon build --packages-select hydra
-#source the package
-. install/local_setup.bash
+  git clone https://github.com/Sameer-Arjun-S/hydra 
+#Configure the project and generate a native build system
+  cmake -S ./ -B build/
+#Compiling and building the project
+  cmake --build build/ --clean-first
+# Build the documentation into the 'docs' directory using CMake:
+  cmake --build build/ --hydra
+
+```
+## Generating the documentation
+```
+# Build the documentation into the 'docs' directory using CMake:
+  cmake --build build/ --target docs
+# Open the documentation as a HTML file in your web browser:
+  open docs/html/index.html
+```
+## Building for test coverage
+```
+# If you don't have gcovr or lcov installed, run:
+  sudo apt-get install gcovr lcov
+# Set the build type to Debug and WANT_COVERAGE=ON:
+  cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
+# Do a clean compile, run unit test, and generate the coverage report:
+  cmake --build build/ --clean-first --target all test_coverage
+# Open a web browser to browse the test coverage report:
+  open build/test_coverage/index.html
+```
+## Checking for cppcheck and cpplint
+```
+# if you need to install cppcheck, do
+sudo apt install cppcheck
+
+# run in the top-level project directory (eg., in cpp-boilerplate-v2/)
+cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" )
+```
+```
+# You may need to install cpplint:
+sudo apt install cpplint
+
+# run in the top-level project directory (eg., in cpp-boilerplate-v2/)
+cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" )
 ```
 
-# Running instructions
+## Google style code verification
 ```
-ros2 launch hydra hydra_world.launch.py
-# Running the swarm algorithm
-ros2 run hydra x_publisher
+# Install Cpplint(ignore if already installed):
+  sudo apt install cpplint
+# Self-check Google code style conformity using Cpplint:
+  cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" )
 ```
 
-# License
-MIT License
-
-Copyright (c) 2023 Manav Nagda, Sameer Arjun S, Ishaan Sameer Parikh 
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
