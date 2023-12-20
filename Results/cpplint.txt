@@ -1,0 +1,7 @@
+one processing ./src/custom_trajectory.cpp
+Done processing ./src/main.cpp
+Done processing ./src/master.cpp
+Done processing ./src/publisher.cpp
+Done processing ./test/main.cpp
+Done processing ./test/publisher_test.cpp
+Done processing ./test/test.cpp
