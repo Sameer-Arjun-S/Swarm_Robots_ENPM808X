@@ -21,7 +21,7 @@ the most optimal formation to prevent any fire hazards. In the event of a fire o
 receives input specifying the affected machine. Later, the robots approach the destination and form
 the optimal shape of surroundings in square, circle, or triangle shapes.
 
-# Agile Implpementation Process:
+## Agile Implpementation Process:
 - [Agile Iterative Process](https://docs.google.com/spreadsheets/d/1kNnjrfgtdtyvd8Hb7R8aV4-XI82XxSHm4BPfusI4Z_g/edit#gid=1106376998)
 - [Sprint Review](https://docs.google.com/document/d/1fweS0_-lTLAzGLIpkdcCDKc-3AHm12xAb0H6oILBxqQ/edit)
 
