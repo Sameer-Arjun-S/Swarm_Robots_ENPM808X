@@ -1,7 +1,19 @@
+/**
+ * @file main.cpp
+ * @author Driver: Sameer ; Navigator: Ishaan;  Design keeper: Manav
+ * @brief  Contains the definition of CustomTrajectory class for generating robot trajectories
+ * @version 0.1
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include "../include/custom_trajectory.hpp"
 
 using std::vector;
 
+/**
+ * @brief Constructor for CustomTrajectory class.
+ * Initializes default values for trajectory generation.
+ */
 CustomTrajectory::CustomTrajectory() {
 
   centersArray[0][0] = 20.0;
@@ -21,6 +33,10 @@ CustomTrajectory::CustomTrajectory() {
   robotCount = 12;
 }
 
+/**
+ * @brief Randomly selects a center from the predefined centers.
+ * @return An integer indicating the type of center chosen.
+ */
 int CustomTrajectory::randomizeCenter() {
 
   int randomIndex = rand() % 4;  
@@ -36,6 +52,12 @@ int CustomTrajectory::randomizeCenter() {
   }
 }
 
+/**
+ * @brief Assigns a station number based on the given coordinates.
+ * @param x X-coordinate
+ * @param y Y-coordinate
+ * @return An integer representing the assigned station number.
+ */
 int CustomTrajectory::assignStationNumber(double x, double y) {
 
   if ((x == 20.0 && y == 20.0)) {
@@ -49,19 +71,36 @@ int CustomTrajectory::assignStationNumber(double x, double y) {
   }
 }
 
+/**
+ * @brief Set the center coordinates.
+ * @param x X-coordinate of the center
+ * @param y Y-coordinate of the center
+ */
 void CustomTrajectory::setCenter(double x, double y) {
   xCenter = x;
   yCenter = y;
 }
 
+/**
+ * @brief Set the number of robots.
+ * @param n Number of robots.
+ */
 void CustomTrajectory::setRobotCount(double n) {
   robotCount = n;
 }
 
+/**
+ * @brief Get the number of robots.
+ * @return The number of robots.
+ */
 int CustomTrajectory::getRobotCount() {
   return robotCount;
 }
 
+/**
+ * @brief Generate a circular path for the robots to follow.
+ * @return A vector containing the coordinates of the circular path.
+ */
 vector<vector<double>> CustomTrajectory::generateCirclePath() {
   vector<vector<double>> circlePath(robotCount, vector<double>(2, 0));
   double angle = 0;
@@ -74,6 +113,10 @@ vector<vector<double>> CustomTrajectory::generateCirclePath() {
   return circlePath;
 }
 
+/**
+ * @brief Generate a square path for the robots to follow.
+ * @return A vector containing the coordinates of the square path.
+ */
 vector<vector<double>> CustomTrajectory::generateSquarePath() {
   vector<vector<double>> squarePath(robotCount, vector<double>(2, 0));
   double x = xCenter - sideLength / 2;

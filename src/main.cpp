@@ -1,10 +1,13 @@
 /**
  * @file main.cpp
- * @brief  Main file for the project to create nodes and control the robots
+ * @author Driver: Ishaan; Navigator: Manav;  Design keeper: Sameer
+ * @brief  Main file for the project which creates the nodes
  * @version 0.1
- * @date 2023
+ * @copyright Copyright (c) 2023
+ *
  */
 
+// Importing the necessary libraries
 #include "../include/master.hpp"
 #include "../include/custom_trajectory.hpp"
 #include <cstdlib>
@@ -14,37 +17,31 @@ using std::cout;
 using std::endl;
 using std::vector;
 
+/**
+ * @brief Main function for the project
+ * @param argc Number of command line arguments
+ * @param argv Array of command line arguments
+ * @return Integer value indicating the execution status
+ */
 int main(int argc, char **argv) {
-  // Initialize ROS
   rclcpp::init(argc, argv);
-
-  // Seed the random number generator with the current time
+  // Seeding the random number generator
   std::srand(static_cast<unsigned int>(std::time(nullptr)));
+  rclcpp::executors::MultiThreadedExecutor exec;
+  std::vector<std::shared_ptr<RobotMove>> robot_array;
+  // Implementing loop for instances of RoboMove object
+  for (int i = 0; i < 24; i++) {
+    auto r_namespace = "tb" + std::to_string(i);
+    auto nodename = "tb" + std::to_string(i) + "_node";
+    // Shared pointer for RoboMove object
+    auto robot = std::make_shared<RobotMove>(nodename, r_namespace);
+    exec.add_node(robot);
+    robot_array.push_back(robot);
+  }
 
-//   // Create a MultiThreadedExecutor to handle multiple nodes
-//   rclcpp::executors::MultiThreadedExecutor exec;
-
-//   // Create an array to hold robot nodes
-//   std::vector<std::shared_ptr<RobotMove>> robot_array;
-
-  // Create and add robot nodes to the executor
-//   for (int i = 0; i < 24; i++) {
-//     auto r_namespace = "tb" + std::to_string(i);
-//     auto nodename = "tb" + std::to_string(i) + "_node";
-//     auto robot = std::make_shared<RobotMove>(nodename, r_namespace);
-//     exec.add_node(robot);
-//     robot_array.push_back(robot);
-//   }
-
-//   // Create and add the master node to the executor
-//   auto node = std::make_shared<Master>(robot_array);
-//   exec.add_node(node);
-
-  // Spin the executor to run all nodes
-//   exec.spin();
-
-//   // Shutdown ROS
-//   rclcpp::shutdown();
-
+  auto node = std::make_shared<Master>(robot_array);
+  exec.add_node(node);
+  exec.spin();
+  rclcpp::shutdown();
   return 0;
 }

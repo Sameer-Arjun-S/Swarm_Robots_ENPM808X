@@ -16,15 +16,23 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::placeholders::_1;
-
 using LaserScanMsg = sensor_msgs::msg::LaserScan;
 
+/**
+ * @brief Callback function for subscribing to robot odometry data.
+ * @param msg Odometry message containing robot pose information.
+ */
 void RobotMove::subscribe_callback(const ODOM &msg) {
   pose.first = msg.pose.pose.position.x;
   pose.second = msg.pose.pose.position.y;
   theta = asin(msg.pose.pose.orientation.z) * 2;
 }
 
+/**
+ * @brief Move the robot with specified linear and angular speeds.
+ * @param linear Linear speed of the robot.
+ * @param angular Angular speed of the robot.
+ */
 void RobotMove::move(double linear, double angular) {
   geometry_msgs::msg::Twist msg;
   msg.linear.x = linear;
@@ -32,6 +40,9 @@ void RobotMove::move(double linear, double angular) {
   publisher_velocity->publish(msg);
 }
 
+/**
+ * @brief Stop the robot's movement.
+ */
 void RobotMove::stop() {
   geometry_msgs::msg::Twist cmd_vel_msg;
   cmd_vel_msg.linear.x = 0;
@@ -39,6 +50,10 @@ void RobotMove::stop() {
   publisher_velocity->publish(cmd_vel_msg);
 }
 
+/**
+ * @brief Process the robot's movement towards a goal.
+ * Implements a simple proportional controller for reaching the goal.
+ */
 void RobotMove::process_callback() {
   std::pair<double, double> goal{goal_x, goal_y};
   double K_linear = 0.05;
@@ -61,6 +76,10 @@ void RobotMove::process_callback() {
   }
 }
 
+/**
+ * @brief Check if an obstacle is detected ahead using laser scan data.
+ * @return True if an obstacle is detected, otherwise false.
+ */
 bool RobotMove::checkObstacleAhead() {
   if (!laser_scan_data_available) {
     return false;

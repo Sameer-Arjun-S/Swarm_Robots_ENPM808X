@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author Driver: Navigator: 
+ * @author Driver: Sameer ; Navigator: Ishaan;  Design keeper: Manav
  * @brief  Main file for the project which runs the tests
  * @version 0.1
  * 
@@ -12,11 +12,13 @@
 
 
 /**
- * @brief Main function for the project
+ * @brief Main function for the test suite.
  * 
- * @param argc  Number of arguments
- * @param argv  Arguments
- * @return int  Returns result of the tests
+ * Initializes ROS2 node and runs all available tests using Google Test.
+ * 
+ * @param argc Number of arguments.
+ * @param argv Arguments.
+ * @return int Returns the result of the tests.
  */
 int main(int argc, char** argv) {
   rclcpp::init(argc, argv);
