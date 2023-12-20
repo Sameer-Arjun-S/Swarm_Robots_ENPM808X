@@ -47,7 +47,7 @@ void Master::traj() {
   int stationNumber = trajectory.assignStationNumber(trajectory.xCenter, trajectory.yCenter); 
   trajectory.setRobotCount(20);
   vector<vector<double>> circleTrajectory = trajectory.generateCirclePath();
-  vector<vector<double>> squareTrajectory = trajectory.generateCirclePath();
+  vector<vector<double>> squareTrajectory = trajectory.generateSquarePath();
 
   cout << "There is a fire at station number: " << stationNumber << endl;
 
