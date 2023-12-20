@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author Driver:  Navigator:
+ * @author Driver: Sameer ; Navigator: Ishaan;  Design keeper: Manav
  * @brief  Contains the definition of CustomTrajectory class for generating robot trajectories
  * @version 0.1
  * @copyright Copyright (c) 2023

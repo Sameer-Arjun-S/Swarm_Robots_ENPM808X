@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author Driver:  Navigator:
+ * @author Driver: Ishaan; Navigator: Manav;  Design keeper: Sameer
  * @brief  Main file for the project which creates the nodes
  * @version 0.1
  * @copyright Copyright (c) 2023

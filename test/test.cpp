@@ -1,6 +1,6 @@
 /**
  * @file publisher_test.cpp
- * @author Driver:  Navigator: 
+ * @author Driver: Manav ; Navigator: Ishaan;  Design keeper: Sameer
  * @brief  Test file for the project which tests the publisher and subscriber
  * @version 0.1
  * @copyright Copyright (c) 2023
